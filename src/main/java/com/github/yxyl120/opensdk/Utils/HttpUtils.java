@@ -1,9 +1,5 @@
 package com.github.yxyl120.opensdk.Utils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.yxyl120.opensdk.domain.RequestParameter;
-import com.github.yxyl120.opensdk.domain.order.OrderInfo;
 import com.github.yxyl120.opensdk.YxException;
 
 import java.io.*;
@@ -15,20 +11,6 @@ public class HttpUtils {
 
     private static final Charset CHARSET = Charset.forName("UTF-8");
 
-    /**
-     * 推送订单到一线平台
-     *
-     * @param api       接口
-     * @param parameter 接口参数
-     * @return 推送结果
-     * @throws YxException
-     */
-    public static String pushOrder(String api, RequestParameter<OrderInfo> parameter) throws YxException {
-        ParameterCheckUtils.checkParameters(parameter);
-        String sign = SignUtils.sign(parameter);
-        parameter.setSig(sign);
-        return post(api, toJson(parameter));
-    }
 
     /**
      * 请求一线api专用post请求
@@ -74,14 +56,6 @@ public class HttpUtils {
         return result.toString();
     }
 
-    private static String toJson(Object object) {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsString(object);
-        } catch (JsonProcessingException e) {
-            return "";
-        }
-    }
 
     private static void close(Closeable closeable) {
         try {
