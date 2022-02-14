@@ -1,4 +1,4 @@
-package com.github.yxyl120.opensdk.annotation;
+package com.github.yxyl120.sdk.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -12,12 +12,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiFieldProperty {
 
+    String value() default "";
     /**
      * 指定是否需要该参数。默认必须
      */
-    boolean required() default true;
+    boolean required() default false;
 
-    boolean multipartField() default false;
     /**
      *
      * @return

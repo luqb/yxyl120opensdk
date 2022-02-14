@@ -1,6 +1,6 @@
-package com.github.yxyl120.opensdk.Utils;
+package com.github.yxyl120.sdk.Utils;
 
-import com.github.yxyl120.opensdk.YxException;
+import com.github.yxyl120.sdk.YxException;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -21,6 +21,8 @@ public class HttpUtils {
      * @throws Exception -
      */
     public static String post(String api, String jsonStr) throws YxException {
+        System.out.println(api);
+        System.out.println(jsonStr);
         StringBuilder result = new StringBuilder();
         DataOutputStream out = null;
         BufferedReader bufferedReader = null;
@@ -48,7 +50,8 @@ public class HttpUtils {
                 result.append(getLine);
             }
         } catch (Exception e) {
-            throw new YxException("请求接口" + api + "发生错误", e);
+            e.printStackTrace();
+            throw new YxException("请求接口" + api + "发生错误", e,400);
         } finally {
             close(out);
             close(bufferedReader);
