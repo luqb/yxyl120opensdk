@@ -39,7 +39,7 @@ public class DefaultYxClient implements YxClient {
      */
     @Override
     public <T extends AbstractResponse> T execute(YxRequest<T> request) {
-        CheckRequestUtils.doCheck(request);
+        CheckRequestUtils.doCheck(request, this.appSecret, this.appSecret.substring(0, 16));
         String bodyStr = toJson(request);
         String url = this.buildUrl(request, bodyStr);
         String responseBodyStr = HttpUtils.post(url, bodyStr);

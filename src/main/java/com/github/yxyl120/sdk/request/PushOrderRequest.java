@@ -1,15 +1,16 @@
 package com.github.yxyl120.sdk.request;
 
 import com.github.yxyl120.sdk.annotation.ApiFieldProperty;
-import com.github.yxyl120.sdk.annotation.Valid;
-import com.github.yxyl120.sdk.domain.order.DrugInfo;
-import com.github.yxyl120.sdk.domain.order.PatientInfo;
+import com.github.yxyl120.sdk.domain.DrugInfo;
+import com.github.yxyl120.sdk.domain.PatientInfo;
 import com.github.yxyl120.sdk.response.PushOrderResponse;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-public class PushOrderRequest extends AbsRequest implements YxRequest<PushOrderResponse>{
+public class PushOrderRequest implements YxRequest<PushOrderResponse>{
     /**
      * 合作方订单id
      */
@@ -31,7 +32,7 @@ public class PushOrderRequest extends AbsRequest implements YxRequest<PushOrderR
     /**
      * 付费类型 0 自费 1 公费 2 医保 3 其他
      */
-    @ApiFieldProperty(value = "付费类型 0 自费 1 公费 2 医保 3 其他,默认为自费")
+    @ApiFieldProperty(value = "付费类型 0 自费 1 公费 2 医保 3 其他,默认为:0-自费")
     private Integer paymentType;
 
     /**
@@ -49,22 +50,20 @@ public class PushOrderRequest extends AbsRequest implements YxRequest<PushOrderR
     /**
      * 患者详情
      */
-    @Valid
-    @ApiFieldProperty(value = "患者详情", required = true)
+    @ApiFieldProperty(value = "患者详情", required = true,validClass = true)
     private PatientInfo patientInfo;
 
     /**
      * 药品列表
      */
-    @Valid
-    @ApiFieldProperty(value = "药品列表", required = true)
+    @ApiFieldProperty(value = "药品列表", required = true,validClass = true)
     private List<DrugInfo> drugList;
 
     /**
      * 药店ID
      */
     @ApiFieldProperty("药店ID")
-    private String storeIdThird;
+    private String storeId;
 
     /**
      * 药店名称
@@ -79,7 +78,7 @@ public class PushOrderRequest extends AbsRequest implements YxRequest<PushOrderR
     private List<String> diagnosis;
 
     /**
-     * 凭证图片 URL json格式 ["1.jpg", "2.jpg"]
+     * 凭证图片 URL json格式 ["http://1.jpg", "http://2.jpg"]
      */
     @ApiFieldProperty("凭证图片 URL Array格式 [\"1.jpg\", \"2.jpg\"]")
     private List<String> voucherImg;
@@ -88,7 +87,7 @@ public class PushOrderRequest extends AbsRequest implements YxRequest<PushOrderR
      * 是否CA签名 0 否 | 1 是
      */
     @ApiFieldProperty("是否需要CA电子签名pdf文件，此功能需要药店相关的药师先进行电子签章注册并授权")
-    private String signPDF;
+    private Integer signPDF;
 
     /**
      * 创建时间
@@ -101,6 +100,12 @@ public class PushOrderRequest extends AbsRequest implements YxRequest<PushOrderR
         return "/api/open/receiveOrder";
     }
 
+    @Override
+    public Map<String, Object> getQueryParam() {
+        TreeMap<String, Object> treeMap = new TreeMap<>();
+        treeMap.put("encrypted","AES");
+        return treeMap;
+    }
 
     @Override
     public Class<PushOrderResponse> getResponseClass() {
@@ -171,12 +176,12 @@ public class PushOrderRequest extends AbsRequest implements YxRequest<PushOrderR
         this.drugList = drugList;
     }
 
-    public String getStoreIdThird() {
-        return storeIdThird;
+    public String getStoreId() {
+        return storeId;
     }
 
-    public void setStoreIdThird(String storeIdThird) {
-        this.storeIdThird = storeIdThird;
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
     }
 
     public String getStoreName() {
@@ -203,11 +208,11 @@ public class PushOrderRequest extends AbsRequest implements YxRequest<PushOrderR
         this.voucherImg = voucherImg;
     }
 
-    public String getSignPDF() {
+    public Integer getSignPDF() {
         return signPDF;
     }
 
-    public void setSignPDF(String signPDF) {
+    public void setSignPDF(Integer signPDF) {
         this.signPDF = signPDF;
     }
 

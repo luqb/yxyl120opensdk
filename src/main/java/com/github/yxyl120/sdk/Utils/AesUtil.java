@@ -45,7 +45,7 @@ public class AesUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return str;
     }
 
 }

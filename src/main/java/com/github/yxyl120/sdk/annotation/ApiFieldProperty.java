@@ -13,14 +13,23 @@ import java.lang.annotation.Target;
 public @interface ApiFieldProperty {
 
     String value() default "";
+
     /**
      * 指定是否需要该参数。默认必须
      */
     boolean required() default false;
 
     /**
+     * 校验子类属性
      *
-     * @return
+     * @return 默认不校验
      */
-    String notes() default "";
+    boolean validClass() default false;
+
+    /**
+     * 加密属性值
+     * @return AES等等方式加密字段属性，暂时只支持AES
+     */
+    String encrypted() default "";
+
 }

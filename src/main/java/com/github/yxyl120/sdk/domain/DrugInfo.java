@@ -1,4 +1,4 @@
-package com.github.yxyl120.sdk.domain.order;
+package com.github.yxyl120.sdk.domain;
 
 import com.github.yxyl120.sdk.annotation.ApiFieldProperty;
 

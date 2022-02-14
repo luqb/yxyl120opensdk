@@ -1,7 +1,7 @@
 import com.github.yxyl120.sdk.DefaultYxClient;
 import com.github.yxyl120.sdk.YxException;
-import com.github.yxyl120.sdk.domain.order.DrugInfo;
-import com.github.yxyl120.sdk.domain.order.PatientInfo;
+import com.github.yxyl120.sdk.domain.DrugInfo;
+import com.github.yxyl120.sdk.domain.PatientInfo;
 import com.github.yxyl120.sdk.request.PushOrderRequest;
 import com.github.yxyl120.sdk.response.PushOrderResponse;
 
@@ -31,6 +31,7 @@ public class APITest {
         patientInfo.setKidney(0);
         patientInfo.setLiver(0);
         patientInfo.setLactation(0);
+        patientInfo.setMobile("13428841594");
         patientInfo.setBirthday("2021-12-29");
 
         patientInfo.setMainSuit("咳嗽");

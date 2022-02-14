@@ -1,7 +1,6 @@
-package com.github.yxyl120.sdk.domain.order;
+package com.github.yxyl120.sdk.domain;
 
 import com.github.yxyl120.sdk.annotation.ApiFieldProperty;
-import com.github.yxyl120.sdk.annotation.Encrypted;
 
 import java.io.Serializable;
 
@@ -10,8 +9,7 @@ public class PatientInfo implements Serializable {
     /**
      * 身份证号码
      */
-    @Encrypted
-    @ApiFieldProperty("身份证号码")
+    @ApiFieldProperty(value = "身份证号码", encrypted = "AES")
     private String idNumber;
 
     /**
@@ -23,8 +21,7 @@ public class PatientInfo implements Serializable {
     /**
      * 患者电话
      */
-    @Encrypted
-    @ApiFieldProperty("患者电话")
+    @ApiFieldProperty(value = "患者电话", encrypted = "AES")
     private String mobile;
 
     /**
