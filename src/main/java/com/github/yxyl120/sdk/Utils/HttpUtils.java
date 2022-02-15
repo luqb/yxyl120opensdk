@@ -50,7 +50,6 @@ public class HttpUtils {
                 result.append(getLine);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             throw new YxException("请求接口" + api + "发生错误", e,400);
         } finally {
             close(out);
@@ -66,8 +65,7 @@ public class HttpUtils {
                 return;
             }
             closeable.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
     }
 }
