@@ -1,3 +1,5 @@
+package com.yxyl120;
+
 import com.github.yxyl120.sdk.DefaultYxClient;
 import com.github.yxyl120.sdk.YxClient;
 import com.github.yxyl120.sdk.YxException;
