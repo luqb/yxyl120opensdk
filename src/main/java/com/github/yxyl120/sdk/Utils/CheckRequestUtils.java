@@ -2,6 +2,7 @@ package com.github.yxyl120.sdk.Utils;
 
 import com.github.yxyl120.sdk.YxException;
 import com.github.yxyl120.sdk.annotation.ApiFieldProperty;
+import com.github.yxyl120.sdk.enums.ResponseCode;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ public class CheckRequestUtils {
 
     public static void doCheck(Object parameter,String ivKey,String ivOffset) throws YxException {
         if (parameter == null) {
-            throw new YxException("参数不能为空", 400);
+            throw new YxException("参数不能为空", ResponseCode.MissingParameter.getCode());
         }
         String className = parameter.getClass().getName();
         Map<Field, ApiFieldProperty> propertyMap = fieldPropertys.get(className);
@@ -39,7 +40,8 @@ public class CheckRequestUtils {
                 if (property.required()) {
                     Object value = key.get(parameter);
                     if (value == null || ("java.lang.String".equals(name) && isEmpty((String) value))) {
-                        throw new YxException("参数[" + key.getName() + "]不能为空,字段描述：" + property.value(), 400);
+                        throw new YxException("参数[" + key.getName() + "]不能为空,字段描述：" + property.value(),
+                                ResponseCode.MissingParameter.getCode());
                     }
                 }
                 // 需要使用属性加密的值

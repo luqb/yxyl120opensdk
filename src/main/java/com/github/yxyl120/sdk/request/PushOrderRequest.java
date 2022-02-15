@@ -80,7 +80,7 @@ public class PushOrderRequest implements YxRequest<PushOrderResponse>{
     /**
      * 凭证图片 URL json格式 ["http://1.jpg", "http://2.jpg"]
      */
-    @ApiFieldProperty("凭证图片 URL Array格式 [\"1.jpg\", \"2.jpg\"]")
+    @ApiFieldProperty("凭证图片 URL Array格式 [\"http://1.jpg\", \"http://2.jpg\"]")
     private List<String> voucherImg;
 
     /**
@@ -88,6 +88,18 @@ public class PushOrderRequest implements YxRequest<PushOrderResponse>{
      */
     @ApiFieldProperty("是否需要CA电子签名pdf文件，此功能需要药店相关的药师先进行电子签章注册并授权")
     private Integer signPDF;
+
+    @ApiFieldProperty("药师id使用模式：0-匹配模式，id不存在时将以一线平台药师代替，1-严格模式，id不可用时将提交失败")
+    private Integer pharmacistModel;
+
+    @ApiFieldProperty("在一线平台注册的审核药师id")
+    private Integer pharmacistId;
+
+    @ApiFieldProperty("在一线平台注册的配药药师id")
+    private Integer deploymentPharmacistId;
+
+    @ApiFieldProperty("在一线平台注册的发药药师id")
+    private Integer dispensingPharmacistId;
 
     /**
      * 创建时间
@@ -214,6 +226,38 @@ public class PushOrderRequest implements YxRequest<PushOrderResponse>{
 
     public void setSignPDF(Integer signPDF) {
         this.signPDF = signPDF;
+    }
+
+    public Integer getPharmacistModel() {
+        return pharmacistModel;
+    }
+
+    public void setPharmacistModel(Integer pharmacistModel) {
+        this.pharmacistModel = pharmacistModel;
+    }
+
+    public Integer getPharmacistId() {
+        return pharmacistId;
+    }
+
+    public void setPharmacistId(Integer pharmacistId) {
+        this.pharmacistId = pharmacistId;
+    }
+
+    public Integer getDeploymentPharmacistId() {
+        return deploymentPharmacistId;
+    }
+
+    public void setDeploymentPharmacistId(Integer deploymentPharmacistId) {
+        this.deploymentPharmacistId = deploymentPharmacistId;
+    }
+
+    public Integer getDispensingPharmacistId() {
+        return dispensingPharmacistId;
+    }
+
+    public void setDispensingPharmacistId(Integer dispensingPharmacistId) {
+        this.dispensingPharmacistId = dispensingPharmacistId;
     }
 
     public Date getCreateTime() {

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.yxyl120.sdk.Utils.CheckRequestUtils;
 import com.github.yxyl120.sdk.Utils.HttpUtils;
+import com.github.yxyl120.sdk.enums.ResponseCode;
 import com.github.yxyl120.sdk.request.YxRequest;
 import com.github.yxyl120.sdk.response.AbstractResponse;
 import org.springframework.util.DigestUtils;
@@ -47,7 +48,7 @@ public class DefaultYxClient implements YxClient {
         if (readValue == null) {
             throw new YxException("解析数据异常：" + responseBodyStr, 400);
         }
-        if (readValue.getCode() != SUCCESS_CODE) {
+        if (readValue.getCode() != ResponseCode.SUCCESS.getCode()) {
             throw new YxException(readValue.getMsg(), readValue.getCode());
         }
         return readValue;

@@ -3,6 +3,8 @@ package com.github.yxyl120.sdk.request;
 import com.github.yxyl120.sdk.annotation.ApiFieldProperty;
 import com.github.yxyl120.sdk.response.SyncPharmacistResponse;
 
+import java.io.Serializable;
+
 /**
  * 同步药师到一线
  */
@@ -12,7 +14,7 @@ public class SyncPharmacistInfoRequest extends AbsRequest implements YxRequest<S
      * 合作方的药师id
      */
     @ApiFieldProperty(value = "合作方的药师id", required = true)
-    private String pharmacistId;
+    private Serializable pharmacistId;
 
     @ApiFieldProperty(value = "药师真实姓名", required = true)
     private String pharmacistName;
@@ -59,11 +61,11 @@ public class SyncPharmacistInfoRequest extends AbsRequest implements YxRequest<S
     }
 
 
-    public String getPharmacistId() {
+    public Serializable getPharmacistId() {
         return pharmacistId;
     }
 
-    public void setPharmacistId(String pharmacistId) {
+    public void setPharmacistId(Serializable pharmacistId) {
         this.pharmacistId = pharmacistId;
     }
 

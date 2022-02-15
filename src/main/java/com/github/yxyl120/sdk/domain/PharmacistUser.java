@@ -15,9 +15,18 @@ public class PharmacistUser {
     private Serializable userIdThree;
 
     /**
-     * 用户名称
+     * 用户姓名
      */
-    private String userName;
+    private String name;
+    /**
+     * 用户在一线的账号
+     */
+    private String userAccount;
+
+    /**
+     * 用户在一线的账号密码
+     */
+    private String userPassword;
 
     /**
      * 状态，同步到一线平台后，需要等待审核通过才可以使用此用户信息
@@ -45,12 +54,28 @@ public class PharmacistUser {
         this.userIdThree = userIdThree;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     public int getStatus() {

@@ -8,15 +8,10 @@ import java.util.Map;
 /**
  * 发送图片消息到医生
  */
-public class SendImageChatRequest extends ImageChat implements YxRequest<EmptyResponse> {
+public class ImageChatRequest extends ImageChat implements YxRequest<EmptyResponse> {
 
-    public SendImageChatRequest(String orderSn, String imgUrl) {
+    public ImageChatRequest(String orderSn, String imgUrl) {
         super(orderSn, imgUrl);
-    }
-
-    @Override
-    public String getApi() {
-        return "/api/open/sendTextChat";
     }
 
     @Override
