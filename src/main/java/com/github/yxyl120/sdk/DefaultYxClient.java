@@ -89,10 +89,7 @@ public class DefaultYxClient implements YxClient {
         buffer.append("&appSecret=")
                 .append(this.appSecret)
                 .append("&body=").append(body);
-        System.out.println(buffer.toString());
-
         String sign = DigestUtils.md5DigestAsHex(buffer.toString().getBytes(StandardCharsets.UTF_8));
-
         return this.serverUrl + request.getApi() + "?" + query + "&sign=" + sign;
     }
 

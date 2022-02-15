@@ -90,7 +90,7 @@ public class PushOrderRequest implements YxRequest<PushOrderResponse>{
     private Integer signPDF;
 
     @ApiFieldProperty("药师id使用模式：0-匹配模式，id不存在时将以一线平台药师代替，1-严格模式，id不可用时将提交失败")
-    private Integer pharmacistModel;
+    private int pharmacistModel;
 
     @ApiFieldProperty("在一线平台注册的审核药师id")
     private Integer pharmacistId;
