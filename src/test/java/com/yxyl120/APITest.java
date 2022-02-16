@@ -26,7 +26,7 @@ public class APITest {
     }
 
     public static void main(String[] args) throws YxException {
-        new APITest().pushOrderTest();
+        new APITest().sendImageMsg();
     }
 
     /**
@@ -66,6 +66,12 @@ public class APITest {
 
         orderRequest.setDrugList(Collections.singletonList(drugInfo));
         orderRequest.setRpType("01");
+        //------- 指定处方药师部分（可选） -----
+        orderRequest.setPharmacistModel(1);
+        orderRequest.setPharmacistId(20);
+        orderRequest.setDeploymentPharmacistId(28);
+        orderRequest.setDispensingPharmacistId(383);
+        //------- 指定药师部分结束-----
 
         PushOrderResponse response = yxClient.execute(orderRequest);
         System.out.println(response);
@@ -101,6 +107,14 @@ public class APITest {
         LiveChatRequest request = new LiveChatRequest("C2201121686180076");
         EmptyResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
+    }
+
+    private void sendMediaChatRequest(){
+        MediaChatRequest request = new MediaChatRequest("C2201121686180076");
+        request.setDuration(20);
+        request.setMediaUrl("https://asset.nxk520.com/test.mp4");
+        request.setFileFormat("mp4");
+        EmptyResponse response = yxClient.execute(request);
     }
 
     /**

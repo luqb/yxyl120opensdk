@@ -8,8 +8,13 @@ public class Chat {
 
     private String orderSn;
 
+    public Chat(int chatType, String orderSn) {
+        this.chatType = chatType;
+        this.orderSn = orderSn;
+    }
+
     @JsonIgnore
-    private String api ="/api/open/sendTextChat";
+    private String api ="/api/open/receivePatientMessage";
 
     @JsonIgnore
     public String getApi() {
