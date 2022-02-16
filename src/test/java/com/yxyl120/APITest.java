@@ -19,9 +19,18 @@ public class APITest {
     private YxClient yxClient;
 
     public APITest() {
+        /**
+         * 一线医疗提供的服务地址
+         */
         String serverUrl = "http://localhost:8515";
-        String appId = "440004901";
-        String secret = "DB957E8E2F41AB28B65840BD47A76AF2";
+        /**
+         * 一线医疗提供的 appid
+         */
+        String appId = "";
+        /**
+         * 一线医疗提供的密钥
+         */
+        String secret = "";
         yxClient = new DefaultYxClient(serverUrl, appId, secret);
     }
 
@@ -126,12 +135,12 @@ public class APITest {
     /**
      * 注销药师，或启用药师
      */
-    private void SyncPharmacistStatusTest(){
+    private void SyncPharmacistStatusTest() {
 
 //        SyncPharmacistStatusRequest request = new SyncPharmacistStatusRequest();
 //        request.setPharmacistId(764);
 //        request.setStatus(0);
-        SyncPharmacistStatusRequest request = new SyncPharmacistStatusRequest(764,0);
+        SyncPharmacistStatusRequest request = new SyncPharmacistStatusRequest(764, 0);
         SyncPharmacistResponse response = yxClient.execute(request);
     }
 
