@@ -7,6 +7,7 @@ import com.github.yxyl120.sdk.domain.DrugInfo;
 import com.github.yxyl120.sdk.domain.PatientInfo;
 import com.github.yxyl120.sdk.domain.RoomInfo;
 import com.github.yxyl120.sdk.request.*;
+import com.github.yxyl120.sdk.response.ChatResponse;
 import com.github.yxyl120.sdk.response.EmptyResponse;
 import com.github.yxyl120.sdk.response.PushOrderResponse;
 import com.github.yxyl120.sdk.response.SyncPharmacistResponse;
@@ -35,7 +36,7 @@ public class APITest {
     }
 
     public static void main(String[] args) throws YxException {
-        new APITest().pushOrderTest();
+        new APITest().syncPharmacistInfoTest();
     }
 
     /**
@@ -75,6 +76,12 @@ public class APITest {
 
         orderRequest.setDrugList(Collections.singletonList(drugInfo));
         orderRequest.setRpType("01");
+        //------- 指定处方药师部分（可选） -----
+        orderRequest.setPharmacistModel(1);
+        orderRequest.setPharmacistId(20);
+        orderRequest.setDeploymentPharmacistId(28);
+        orderRequest.setDispensingPharmacistId(383);
+        //------- 指定药师部分结束-----
 
         PushOrderResponse response = yxClient.execute(orderRequest);
         System.out.println(response);
@@ -87,7 +94,7 @@ public class APITest {
      */
     private void sendTextMsg() {
         TextChatRequest request = new TextChatRequest("C2201121686180076", "医生你好");
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
     }
 
@@ -99,7 +106,7 @@ public class APITest {
                 "https://asset.nxk520.com/abc.png");
         request.setImgWidth(60);
         request.setImgHeight(110);
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
     }
 
@@ -108,8 +115,16 @@ public class APITest {
      */
     private void sendLiveMsg() {
         LiveChatRequest request = new LiveChatRequest("C2201121686180076");
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
+    }
+
+    private void sendMediaChatRequest(){
+        MediaChatRequest request = new MediaChatRequest("C2201121686180076");
+        request.setDuration(20);
+        request.setMediaUrl("https://asset.nxk520.com/test.mp4");
+        request.setFileFormat("mp4");
+        ChatResponse response = yxClient.execute(request);
     }
 
     /**
@@ -128,6 +143,7 @@ public class APITest {
         request.setIdEmblemImg("https://asset.nxk520.com/abc.png");
         request.setCertificateImg("https://asset.nxk520.com/abc.png");
         request.setPractitionerCertificateImg("https://asset.nxk520.com/abc.png");
+        request.setSignatureImg("https://asset.nxk520.com/abc.png");
         request.setIntroduction("药师简介……");
         SyncPharmacistResponse response = yxClient.execute(request);
     }
