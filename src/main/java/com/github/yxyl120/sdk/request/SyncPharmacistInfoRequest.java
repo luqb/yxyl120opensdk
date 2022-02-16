@@ -40,6 +40,9 @@ public class SyncPharmacistInfoRequest extends AbsRequest implements YxRequest<S
     @ApiFieldProperty(value = "药师药师资格证")
     private String certificateImg;
 
+    @ApiFieldProperty(value = "药师药师手写签名图片",required = true)
+    private String signatureImg;
+
     @ApiFieldProperty(value = "药师性别", required = true)
     private Integer sex;
 
@@ -155,5 +158,13 @@ public class SyncPharmacistInfoRequest extends AbsRequest implements YxRequest<S
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public String getSignatureImg() {
+        return signatureImg;
+    }
+
+    public void setSignatureImg(String signatureImg) {
+        this.signatureImg = signatureImg;
     }
 }

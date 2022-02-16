@@ -26,7 +26,7 @@ public class APITest {
     }
 
     public static void main(String[] args) throws YxException {
-        new APITest().sendImageMsg();
+        new APITest().syncPharmacistInfoTest();
     }
 
     /**
@@ -133,6 +133,7 @@ public class APITest {
         request.setIdEmblemImg("https://asset.nxk520.com/abc.png");
         request.setCertificateImg("https://asset.nxk520.com/abc.png");
         request.setPractitionerCertificateImg("https://asset.nxk520.com/abc.png");
+        request.setSignatureImg("https://asset.nxk520.com/abc.png");
         request.setIntroduction("药师简介……");
         SyncPharmacistResponse response = yxClient.execute(request);
     }

@@ -117,6 +117,7 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
         request.setIdEmblemImg("https://asset.nxk520.com/abc.png");
         request.setCertificateImg("https://asset.nxk520.com/abc.png");
         request.setPractitionerCertificateImg("https://asset.nxk520.com/abc.png");
+        request.setSignatureImg("https://asset.nxk520.com/abc.png");
         request.setIntroduction("药师简介……");
         SyncPharmacistResponse response = yxClient.execute(request);
     }

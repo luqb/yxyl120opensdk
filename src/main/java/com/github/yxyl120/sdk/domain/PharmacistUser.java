@@ -1,7 +1,5 @@
 package com.github.yxyl120.sdk.domain;
 
-import java.io.Serializable;
-
 public class PharmacistUser {
 
     /**
@@ -12,7 +10,7 @@ public class PharmacistUser {
     /**
      * 合作平台的用户id
      */
-    private Serializable userIdThree;
+    private String userIdThird;
 
     /**
      * 用户姓名
@@ -46,12 +44,12 @@ public class PharmacistUser {
         this.userId = userId;
     }
 
-    public Serializable getUserIdThree() {
-        return userIdThree;
+    public String getUserIdThird() {
+        return userIdThird;
     }
 
-    public void setUserIdThree(Serializable userIdThree) {
-        this.userIdThree = userIdThree;
+    public void setUserIdThird(String userIdThird) {
+        this.userIdThird = userIdThird;
     }
 
     public String getName() {
