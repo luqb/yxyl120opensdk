@@ -11,10 +11,10 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
 ```
 2.  调用接口
 
-```
+```$java
 
 
- /**
+    /**
      * 推送一张视频单或图文单
      */
     private void pushOrderTest() {
@@ -57,18 +57,19 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
         orderRequest.setDeploymentPharmacistId(28);
         orderRequest.setDispensingPharmacistId(383);
         //------- 指定药师部分结束-----
+
         PushOrderResponse response = yxClient.execute(orderRequest);
         System.out.println(response);
         // 房间进行视频通话的相关的信息
         RoomInfo data = response.getData();
-    
+    }
 
     /**
      * 根据处方号发送文本消息
      */
     private void sendTextMsg() {
         TextChatRequest request = new TextChatRequest("C2201121686180076", "医生你好");
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
     }
 
@@ -80,7 +81,7 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
                 "https://asset.nxk520.com/abc.png");
         request.setImgWidth(60);
         request.setImgHeight(110);
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
     }
 
@@ -89,7 +90,7 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
      */
     private void sendLiveMsg() {
         LiveChatRequest request = new LiveChatRequest("C2201121686180076");
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
     }
 
@@ -98,7 +99,7 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
         request.setDuration(20);
         request.setMediaUrl("https://asset.nxk520.com/test.mp4");
         request.setFileFormat("mp4");
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
     }
 
     /**
@@ -130,12 +131,8 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
 //        SyncPharmacistStatusRequest request = new SyncPharmacistStatusRequest();
 //        request.setPharmacistId(764);
 //        request.setStatus(0);
-
-// 药师用id & 0 注销，1启用
         SyncPharmacistStatusRequest request = new SyncPharmacistStatusRequest(764,0);
         SyncPharmacistResponse response = yxClient.execute(request);
     }
-
-}
 ```
 

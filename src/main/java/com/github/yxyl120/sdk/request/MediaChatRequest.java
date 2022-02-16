@@ -2,6 +2,7 @@ package com.github.yxyl120.sdk.request;
 
 import com.github.yxyl120.sdk.annotation.ApiFieldProperty;
 import com.github.yxyl120.sdk.domain.Chat;
+import com.github.yxyl120.sdk.response.ChatResponse;
 import com.github.yxyl120.sdk.response.EmptyResponse;
 
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
 /**
  * 媒体消息请求类
  */
-public class MediaChatRequest extends Chat implements YxRequest<EmptyResponse> {
+public class MediaChatRequest extends Chat implements YxRequest<ChatResponse> {
 
     @ApiFieldProperty(value = "媒体播放地址", required = true)
     private String mediaUrl;
@@ -51,8 +52,8 @@ public class MediaChatRequest extends Chat implements YxRequest<EmptyResponse> {
     }
 
     @Override
-    public Class<EmptyResponse> getResponseClass() {
-        return EmptyResponse.class;
+    public Class<ChatResponse> getResponseClass() {
+        return ChatResponse.class;
     }
 
     public String getMediaUrl() {

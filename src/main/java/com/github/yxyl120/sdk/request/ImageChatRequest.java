@@ -1,6 +1,7 @@
 package com.github.yxyl120.sdk.request;
 
 import com.github.yxyl120.sdk.domain.Chat;
+import com.github.yxyl120.sdk.response.ChatResponse;
 import com.github.yxyl120.sdk.response.EmptyResponse;
 
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Map;
 /**
  * 发送图片消息到医生
  */
-public class ImageChatRequest extends Chat implements YxRequest<EmptyResponse> {
+public class ImageChatRequest extends Chat implements YxRequest<ChatResponse> {
 
     private String imgUrl;
 
@@ -27,8 +28,8 @@ public class ImageChatRequest extends Chat implements YxRequest<EmptyResponse> {
     }
 
     @Override
-    public Class<EmptyResponse> getResponseClass() {
-        return EmptyResponse.class;
+    public Class<ChatResponse> getResponseClass() {
+        return ChatResponse.class;
     }
 
     public String getImgUrl() {

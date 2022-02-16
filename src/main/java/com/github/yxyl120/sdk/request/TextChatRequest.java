@@ -2,11 +2,11 @@ package com.github.yxyl120.sdk.request;
 
 import com.github.yxyl120.sdk.annotation.ApiFieldProperty;
 import com.github.yxyl120.sdk.domain.Chat;
-import com.github.yxyl120.sdk.response.EmptyResponse;
+import com.github.yxyl120.sdk.response.ChatResponse;
 
 import java.util.Map;
 
-public class TextChatRequest extends Chat implements YxRequest<EmptyResponse> {
+public class TextChatRequest extends Chat implements YxRequest<ChatResponse> {
 
     @ApiFieldProperty(value = "消息内容", required = true)
     private String content;
@@ -22,7 +22,15 @@ public class TextChatRequest extends Chat implements YxRequest<EmptyResponse> {
     }
 
     @Override
-    public Class<EmptyResponse> getResponseClass() {
-        return EmptyResponse.class;
+    public Class<ChatResponse> getResponseClass() {
+        return ChatResponse.class;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

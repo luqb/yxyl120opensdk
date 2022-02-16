@@ -7,6 +7,7 @@ import com.github.yxyl120.sdk.domain.DrugInfo;
 import com.github.yxyl120.sdk.domain.PatientInfo;
 import com.github.yxyl120.sdk.domain.RoomInfo;
 import com.github.yxyl120.sdk.request.*;
+import com.github.yxyl120.sdk.response.ChatResponse;
 import com.github.yxyl120.sdk.response.EmptyResponse;
 import com.github.yxyl120.sdk.response.PushOrderResponse;
 import com.github.yxyl120.sdk.response.SyncPharmacistResponse;
@@ -84,7 +85,7 @@ public class APITest {
      */
     private void sendTextMsg() {
         TextChatRequest request = new TextChatRequest("C2201121686180076", "医生你好");
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
     }
 
@@ -96,7 +97,7 @@ public class APITest {
                 "https://asset.nxk520.com/abc.png");
         request.setImgWidth(60);
         request.setImgHeight(110);
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
     }
 
@@ -105,7 +106,7 @@ public class APITest {
      */
     private void sendLiveMsg() {
         LiveChatRequest request = new LiveChatRequest("C2201121686180076");
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
         // 后续需要合作方的接口等待接收回调
     }
 
@@ -114,7 +115,7 @@ public class APITest {
         request.setDuration(20);
         request.setMediaUrl("https://asset.nxk520.com/test.mp4");
         request.setFileFormat("mp4");
-        EmptyResponse response = yxClient.execute(request);
+        ChatResponse response = yxClient.execute(request);
     }
 
     /**
