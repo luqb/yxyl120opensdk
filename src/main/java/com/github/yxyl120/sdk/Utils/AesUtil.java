@@ -28,7 +28,7 @@ public class AesUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return str;
     }
 
     public static String encrypt(String str, String key, String ivStr) {

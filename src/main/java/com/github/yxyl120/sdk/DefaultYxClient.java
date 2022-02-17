@@ -43,6 +43,8 @@ public class DefaultYxClient implements YxClient {
         CheckRequestUtils.doCheck(request, this.appSecret, this.appSecret.substring(0, 16));
         String bodyStr = toJson(request);
         String url = this.buildUrl(request, bodyStr);
+        System.out.println(bodyStr);
+        System.out.println(url);
         String responseBodyStr = HttpUtils.post(url, bodyStr);
         T readValue = parse(responseBodyStr, request.getResponseClass());
         if (readValue == null) {
@@ -89,6 +91,7 @@ public class DefaultYxClient implements YxClient {
         buffer.append("&appSecret=")
                 .append(this.appSecret)
                 .append("&body=").append(body);
+        System.out.println(buffer.toString());
         String sign = DigestUtils.md5DigestAsHex(buffer.toString().getBytes(StandardCharsets.UTF_8));
         return this.serverUrl + request.getApi() + "?" + query + "&sign=" + sign;
     }

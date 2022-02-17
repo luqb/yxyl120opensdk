@@ -23,6 +23,9 @@ public class RoomEvent {
     @ApiFieldProperty("房间事件枚举,LiveEventType")
     private String event;
 
+   @ApiFieldProperty("触发事件的角色，doctor，patient")
+    private String role;
+
     public String getOrderSn() {
         return orderSn;
     }
@@ -61,5 +64,13 @@ public class RoomEvent {
 
     public void setEvent(String event) {
         this.event = event;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

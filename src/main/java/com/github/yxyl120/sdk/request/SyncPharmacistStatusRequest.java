@@ -10,8 +10,8 @@ import java.io.Serializable;
  */
 public class SyncPharmacistStatusRequest extends AbsRequest implements YxRequest<SyncPharmacistResponse> {
 
-    @ApiFieldProperty(value = "一线平台的用户id", required = true)
-    private Serializable pharmacistId;
+    @ApiFieldProperty(value = "合作方的用户id", required = true)
+    private Serializable pharmacistIdThird;
 
     @ApiFieldProperty(value = "药师账号状态：0 注销 | 1 启用", required = true)
     private Integer status;
@@ -19,8 +19,14 @@ public class SyncPharmacistStatusRequest extends AbsRequest implements YxRequest
     public SyncPharmacistStatusRequest() {
     }
 
-    public SyncPharmacistStatusRequest(Serializable pharmacistId, Integer status) {
-        this.pharmacistId = pharmacistId;
+    /**
+     * 构造同步状态的请求
+     *
+     * @param pharmacistIdThird 合作方的用户id
+     * @param status            药师账号状态
+     */
+    public SyncPharmacistStatusRequest(Serializable pharmacistIdThird, Integer status) {
+        this.pharmacistIdThird = pharmacistIdThird;
         this.status = status;
     }
 
@@ -34,12 +40,12 @@ public class SyncPharmacistStatusRequest extends AbsRequest implements YxRequest
         return SyncPharmacistResponse.class;
     }
 
-    public Serializable getPharmacistId() {
-        return pharmacistId;
+    public Serializable getPharmacistIdThird() {
+        return pharmacistIdThird;
     }
 
-    public void setPharmacistId(Serializable pharmacistId) {
-        this.pharmacistId = pharmacistId;
+    public void setPharmacistIdThird(Serializable pharmacistIdThird) {
+        this.pharmacistIdThird = pharmacistIdThird;
     }
 
     public Integer getStatus() {
