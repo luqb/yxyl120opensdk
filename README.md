@@ -11,9 +11,43 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
 ```
 2.  调用接口
 
-```$java
+```java
+import com.github.yxyl120.sdk.DefaultYxClient;
+import com.github.yxyl120.sdk.YxClient;
+import com.github.yxyl120.sdk.YxException;
+import com.github.yxyl120.sdk.domain.DrugInfo;
+import com.github.yxyl120.sdk.domain.PatientInfo;
+import com.github.yxyl120.sdk.domain.RoomInfo;
+import com.github.yxyl120.sdk.request.*;
+import com.github.yxyl120.sdk.response.ChatResponse;
+import com.github.yxyl120.sdk.response.EmptyResponse;
+import com.github.yxyl120.sdk.response.PushOrderResponse;
+import com.github.yxyl120.sdk.response.SyncPharmacistResponse;
 
+import java.util.Collections;
+import java.util.Date;
 
+public class APITest {
+    private YxClient yxClient;
+    public APITest() {
+             /**
+              * 一线医疗提供的服务地址
+              */
+             String serverUrl = "";
+             /**
+              * 一线医疗提供的 appid
+              */
+             String appId = "";
+             /**
+              * 一线医疗提供的密钥
+              */
+             String secret = "";
+             yxClient = new DefaultYxClient(serverUrl, appId, secret);
+         }
+     
+     public static void main(String[] args) throws YxException {
+         new APITest().syncPharmacistInfoTest();
+     }
     /**
      * 推送一张视频单或图文单
      */
@@ -134,5 +168,6 @@ YxClient yxClient= new DefaultYxClient(serverUrl, appId, secret);
         SyncPharmacistStatusRequest request = new SyncPharmacistStatusRequest(764,0);
         SyncPharmacistResponse response = yxClient.execute(request);
     }
+}
 ```
 
